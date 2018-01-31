@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="plugin.video.SportsDevil"
-  version="2018.01.19x"
+  version="2018.01.30a"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
    <import addon="xbmc.python" version="2.14.0"/>
-   <import addon="repository.xvbmc" version="4.2"/>
    <import addon="script.module.dateutil" />
    <import addon="script.module.simplejson" />
    <import addon="script.module.six" />
@@ -30,10 +29,7 @@
     <disclaimer>SportsDevil does not provide any streams of its own; stream quality, content and copyright are responsibility of the ad-financed source web site. For updates - check the readme (XvBMC-NL acts only as a mirror for SportsDevil).</disclaimer>
     <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
     <platform>all</platform>
-    <forum>http://forums.koditips.com/index.php?topic=11.0</forum>
-    <website>http://forums.koditips.com/index.php?topic=11.0</website>
-    <source>http://forums.koditips.com/index.php?topic=11.0</source>
-    <news>version="2018.01.19x" (mirror@xvbmc)</news>
+    <news>version="2018.01.29x" (CerebroTV)</news>
   <assets>
     <icon>icon.png</icon>
     <fanart>fanart.jpg</fanart>
