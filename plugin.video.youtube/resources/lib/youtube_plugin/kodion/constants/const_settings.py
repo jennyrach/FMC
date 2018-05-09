@@ -17,10 +17,6 @@ VERIFY_SSL = 'simple.requests.ssl.verify'  # (bool)
 
 SUPPORT_ALTERNATIVE_PLAYER = 'kodion.support.alternative_player'  # (bool)
 
-VIEW_OVERRIDE = 'kodion.view.override'  # (bool)
-VIEW_DEFAULT = 'kodion.view.default'  # (int)
-VIEW_X = 'kodion.view.%s'  # (int)
-
 ALLOW_DEV_KEYS = 'youtube.allow.dev.keys'  # (bool)
 
 DASH_PROXY = 'kodion.mpd.proxy'  # (bool)

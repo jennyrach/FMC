@@ -397,7 +397,9 @@ class YouTube(LoginClient):
                   'eventType': event_type,
                   'regionCode': self._region,
                   'hl': self._language,
+                  'relevanceLanguage': self._language,
                   'maxResults': str(self._max_results)}
+
         if page_token:
             params['pageToken'] = page_token
 
@@ -450,7 +452,9 @@ class YouTube(LoginClient):
                   'part': 'snippet',
                   'regionCode': self._region,
                   'hl': self._language,
+                  'relevanceLanguage': self._language,
                   'maxResults': str(self._max_results)}
+
         if event_type and event_type in ['live', 'upcoming', 'completed']:
             params['eventType'] = event_type
         if search_type:
@@ -536,6 +540,9 @@ class YouTube(LoginClient):
                 _items = _items[:self._max_results]
                 _result['items'] = _items
                 _result['continue'] = True
+
+            if 'offset' in _result and _result['offset'] >= 100:
+                _result['offset'] -= 100
 
             if len(_result['items']) < self._max_results:
                 if 'continue' in _result:

@@ -312,7 +312,7 @@ class Provider(kodion.AbstractProvider):
 
     @kodion.RegisterProviderPath('^/playlist/(?P<playlist_id>[^/]+)/$')
     def _on_playlist(self, context, re_match):
-        self.set_content_type(context, kodion.constants.content_type.EPISODES)
+        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
 
         result = []
 
@@ -336,7 +336,7 @@ class Provider(kodion.AbstractProvider):
 
     @kodion.RegisterProviderPath('^/channel/(?P<channel_id>[^/]+)/playlist/(?P<playlist_id>[^/]+)/$')
     def _on_channel_playlist(self, context, re_match):
-        self.set_content_type(context, kodion.constants.content_type.EPISODES)
+        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
         client = self.get_client(context)
         settings = context.get_settings()
         result = []
@@ -365,7 +365,7 @@ class Provider(kodion.AbstractProvider):
 
     @kodion.RegisterProviderPath('^/channel/(?P<channel_id>[^/]+)/playlists/$')
     def _on_channel_playlists(self, context, re_match):
-        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
+        self.set_content_type(context, kodion.constants.content_type.FILES)
         result = []
 
         channel_id = re_match.group('channel_id')
@@ -387,7 +387,7 @@ class Provider(kodion.AbstractProvider):
 
     @kodion.RegisterProviderPath('^/channel/(?P<channel_id>[^/]+)/live/$')
     def _on_channel_live(self, context, re_match):
-        self.set_content_type(context, kodion.constants.content_type.EPISODES)
+        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
         result = []
 
         channel_id = re_match.group('channel_id')
@@ -410,7 +410,7 @@ class Provider(kodion.AbstractProvider):
 
     @kodion.RegisterProviderPath('^/(?P<method>(channel|user))/(?P<channel_id>[^/]+)/$')
     def _on_channel(self, context, re_match):
-        self.set_content_type(context, kodion.constants.content_type.EPISODES)
+        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
 
         resource_manager = self.get_resource_manager(context)
 
@@ -525,14 +525,14 @@ class Provider(kodion.AbstractProvider):
     def _on_subscriptions(self, context, re_match):
         method = re_match.group('method')
         if method == 'list':
-            self.set_content_type(context, kodion.constants.content_type.VIDEOS)
+            self.set_content_type(context, kodion.constants.content_type.FILES)
         return yt_subscriptions.process(method, self, context, re_match)
 
     @kodion.RegisterProviderPath('^/special/(?P<category>[^/]+)/$')
     def _on_yt_specials(self, context, re_match):
         category = re_match.group('category')
         if category == 'browse_channels':
-            self.set_content_type(context, kodion.constants.content_type.VIDEOS)
+            self.set_content_type(context, kodion.constants.content_type.FILES)
         return yt_specials.process(category, self, context, re_match)
 
     @kodion.RegisterProviderPath('^/history/clear/$')
@@ -638,16 +638,19 @@ class Provider(kodion.AbstractProvider):
         safe_search = context.get_settings().safe_search()
         page = int(context.get_param('page', 1))
 
+        context.set_param('q', search_text)
+        if context.get_path() == '/kodion/search/input/':
+            context.set_path('/kodion/search/query/')
+
         if search_type == 'video':
-            self.set_content_type(context, kodion.constants.content_type.EPISODES)
-        else:
             self.set_content_type(context, kodion.constants.content_type.VIDEOS)
+        else:
+            self.set_content_type(context, kodion.constants.content_type.FILES)
 
         if page == 1 and search_type == 'video' and not event_type:
             if not channel_id:
                 channel_params = {}
                 channel_params.update(context.get_params())
-                channel_params['q'] = search_text
                 channel_params['search_type'] = 'channel'
                 channel_item = DirectoryItem('[B]' + context.localize(self.LOCAL_MAP['youtube.channels']) + '[/B]',
                                              context.create_uri([context.get_path().replace('input', 'query')], channel_params),
@@ -657,7 +660,6 @@ class Provider(kodion.AbstractProvider):
 
             playlist_params = {}
             playlist_params.update(context.get_params())
-            playlist_params['q'] = search_text
             playlist_params['search_type'] = 'playlist'
             playlist_item = DirectoryItem('[B]' + context.localize(self.LOCAL_MAP['youtube.playlists']) + '[/B]',
                                           context.create_uri([context.get_path().replace('input', 'query')], playlist_params),
@@ -669,7 +671,6 @@ class Provider(kodion.AbstractProvider):
                 # live
                 live_params = {}
                 live_params.update(context.get_params())
-                live_params['q'] = search_text
                 live_params['search_type'] = 'video'
                 live_params['event_type'] = 'live'
                 live_item = DirectoryItem('[B]%s[/B]' % context.localize(self.LOCAL_MAP['youtube.live']),
@@ -911,7 +912,7 @@ class Provider(kodion.AbstractProvider):
         self.get_client(context)
         resource_manager = self.get_resource_manager(context)
 
-        self.set_content_type(context, kodion.constants.content_type.VIDEOS)
+        self.set_content_type(context, kodion.constants.content_type.FILES)
 
         result = []
 
@@ -1000,6 +1001,7 @@ class Provider(kodion.AbstractProvider):
             # purchases
             if settings.get_bool('youtube.folder.purchases.show', False) and \
                     settings.use_dash() and \
+                    settings.use_dash_proxy() and \
                     'drm' in context.inputstream_adaptive_capabilities():
                 purchases_item = DirectoryItem(context.localize(self.LOCAL_MAP['youtube.purchases']),
                                                context.create_uri(['special', 'purchases']),
@@ -1114,7 +1116,7 @@ class Provider(kodion.AbstractProvider):
 
     def set_content_type(self, context, content_type):
         context.set_content_type(content_type)
-        if content_type == kodion.constants.content_type.EPISODES:
+        if content_type == kodion.constants.content_type.VIDEOS:
             context.add_sort_method(kodion.constants.sort_method.UNSORTED,
                                     kodion.constants.sort_method.VIDEO_RUNTIME,
                                     kodion.constants.sort_method.DATE_ADDED,
