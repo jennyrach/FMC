@@ -61,13 +61,27 @@
   <extension point="xbmc.addon.metadata">
     <summary>SopCast and AceStream for Kodi</summary>
     <description lang="en">Plexus - Any complex structure containing an intricate network of parts. Plexus brings native peer-to-peer support (AceStream and SopCast) for Kodi Entertainment Center for several platforms.[CR][CR]Documentation: (missing)</description>
-    <description lang="pt">Plexus - Uma estrutura complexa constituída por uma rede de partes. O Plexus adiciona suporte peer-to-peer nativo (AceStream e Sopcast) ao Kodi Entertainment Center para várias plataformas.[CR][CR]Documentação: (em falta)</description>
-    <description lang="es">Plexus - Una estructura compleja conteniendo una intrincada red de partes. Plexus añade soporte nativo peer-to-peer (AceStream y SopCast) al Centro de Entretenimiento Kodi para varias plataformas.[CR][CR]Documentacion: (falta)</description>
+    <description lang="pt">Plexus - Uma estrutura complexa constituÃ­da por uma rede de partes. O Plexus adiciona suporte peer-to-peer nativo (AceStream e Sopcast) ao Kodi Entertainment Center para vÃ¡rias plataformas.[CR][CR]DocumentaÃ§Ã£o: (em falta)</description>
+    <description lang="es">Plexus - Una estructura compleja conteniendo una intrincada red de partes. Plexus aÃ±ade soporte nativo peer-to-peer (AceStream y SopCast) al Centro de Entretenimiento Kodi para varias plataformas.[CR][CR]Documentacion: (falta)</description>
 	<disclaimer lang="en">The author does not host nor distribute any of the content you may watch using this addon. The author has no part in the development of any included technologies. When seeking help in Kodi's forum please respect rules (http://kodi.wiki/view/Forum_rules).</disclaimer>
-    <disclaimer lang="pt">Os autores não alojam nem distribuem nenhum do conteúdo que poderá ser reproduzido a partir deste addon. Os autores não têm qualquer parte no desenvolvimento de qualquer uma das tecnologias. Se procurar ajuda no fórum oficial do Kodi por favor respeite as regras do fórum (http://kodi.wiki/view/Forum_rules).</disclaimer>
+    <disclaimer lang="pt">Os autores nÃ£o alojam nem distribuem nenhum do conteÃºdo que poderÃ¡ ser reproduzido a partir deste addon. Os autores nÃ£o tÃªm qualquer parte no desenvolvimento de qualquer uma das tecnologias. Se procurar ajuda no fÃ³rum oficial do Kodi por favor respeite as regras do fÃ³rum (http://kodi.wiki/view/Forum_rules).</disclaimer>
    	<disclaimer lang="es">El autor no aloja ni distribuye cualquier contenido que ud. pudiera reproducir usando este addon. El autor no tiene participacion en el desarrollo de cualquier tecnologia incluida. Cuando requiera ayuda en el foro de Kodi por favor respete las reglas (http://kodi.wiki/view/Forum_rules).</disclaimer>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="repository.mrpiracy" name="MrPiracy.top RepositÃ³rio" version="1.0.3" provider-name="MrPiracy.top">
+	<extension point="xbmc.addon.repository" name="MrPiracy Repository">
+		<info compressed="false">http://raw.github.com/mrpiracyPT/repository.mrpiracy/master/addons.xml</info>
+		<checksum>http://raw.github.com/mrpiracyPT/repository.mrpiracy/master/addons.xml.md5</checksum>
+		<datadir zip="true">http://raw.github.com/mrpiracyPT/repository.mrpiracy/master/repo/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>MrPiracy.top RepositÃ³rio</summary>
+		<description>Addon Description</description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
 </addon>
 
 <addon id="repository.ytplugin" name="Youtube Addon Repo" version="1.0" provider-name="Jeffrey Frasure">
@@ -97,30 +111,10 @@
 	</extension>
 	<extension point="xbmc.addon.metadata">
 		<summary>Zero [ 2018 ]</summary>
-		<description>Repositório com todos os ficheiros obrigatórios.
-[B][COLOR white]Para bom funcionamento deste addon é necessário instalar todos os ficheiros de todas as categorias aqui presentes.[/COLOR][/B]</description>
+		<description>RepositÃ³rio com todos os ficheiros obrigatÃ³rios.
+[B][COLOR white]Para bom funcionamento deste addon Ã© necessÃ¡rio instalar todos os ficheiros de todas as categorias aqui presentes.[/COLOR][/B]</description>
 		<disclaimer></disclaimer>
 		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="script.module.resolveurl" name="ResolveURL" version="5.0.05" provider-name="jsergio">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0" />
-		<import addon="plugin.video.youtube" optional="true" />
-		<import addon="script.module.python.twitch" optional="true" />
-		<import addon="script.module.cryptopy" version="1.2.6" optional="true" />
-		<import addon="plugin.video.gdrive" optional="true" />
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.python.pluginsource" library="lib/default.py" />
-	<extension point="xbmc.addon.metadata">
-		<platform>all</platform>
-		<summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
-		<summary lang="es">Resolver enlaces a videos de sitios populares para poder reproducirlos en XBMC/Kodi.</summary>
-		<summary lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju.</summary>
-		<description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
-		<description lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju, pojednostavnjuje razvoj priključaka za video dodatke koji zahtjevaju višestruke video izvore.</description>
 	</extension>
 </addon>
 
@@ -154,11 +148,11 @@
   <extension point="xbmc.service" library="default.py" start="login"></extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en">Autosubs FORK [amet,schumi2004-Mafarricos]</summary>
-    <description lang="en">[COLOR white]Procura automática de legendas em [COLOR lime][PT] [COLOR white]e [COLOR yellow][BR][COLOR white] no inicio da reprodução do Video.[/COLOR]
-[COLOR lime][B]Para um bom funcionamento é necessário:[/B][/COLOR]
-[COLOR white]- Instalar addons de legendas para a língua Portuguesa. [/COLOR]
-[COLOR white]- Ativar nos addons dos Filmes e Séries as legendas em Português.[/COLOR]
-[COLOR red][B]NOTA:[/B] [COLOR white]Este addon serve para apontar aos addons de legendas. Sem eles não vai funcionar.[/COLOR]</description>
+    <description lang="en">[COLOR white]Procura automÃ¡tica de legendas em [COLOR lime][PT] [COLOR white]e [COLOR yellow][BR][COLOR white] no inicio da reproduÃ§Ã£o do Video.[/COLOR]
+[COLOR lime][B]Para um bom funcionamento Ã© necessÃ¡rio:[/B][/COLOR]
+[COLOR white]- Instalar addons de legendas para a lÃ­ngua Portuguesa. [/COLOR]
+[COLOR white]- Ativar nos addons dos Filmes e SÃ©ries as legendas em PortuguÃªs.[/COLOR]
+[COLOR red][B]NOTA:[/B] [COLOR white]Este addon serve para apontar aos addons de legendas. Sem eles nÃ£o vai funcionar.[/COLOR]</description>
     <platform>all</platform>
     <language>pt</language>
     <license>GPL</license>
