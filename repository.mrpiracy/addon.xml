@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="repository.mrpiracy" name="MrPiracy.top Repositório" version="1.0.3" provider-name="MrPiracy.top">
+<addon id="repository.mrpiracy" name="MrPiracy.top Repositorio" version="1.0.3" provider-name="MrPiracy.top">
 	<extension point="xbmc.addon.repository" name="MrPiracy Repository">
 		<info compressed="false">http://raw.github.com/mrpiracyPT/repository.mrpiracy/master/addons.xml</info>
 		<checksum>http://raw.github.com/mrpiracyPT/repository.mrpiracy/master/addons.xml.md5</checksum>
