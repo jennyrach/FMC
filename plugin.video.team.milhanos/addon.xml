@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.team.milhanos"
-       name="[COLOR lime][B]Team [/COLOR][COLOR yellow]Milhanos[/B][/COLOR]"
-       version="0.0.1"
-       provider-name="TEAM MILHANOS">
+<addon id="plugin.video.team.milhanos" name="[B][COLOR lime]TEAM [/COLOR][COLOR yellow]MILHANOS [/B][/COLOR]" version="1.4a" provider-name="[B][COLOR yellow]TEAM [/COLOR][COLOR lime]MILHANOS [/B][/COLOR]">
   <requires>
-
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
     <import addon="script.module.simple.downloader" version="0.9.4"/>
@@ -25,5 +21,11 @@
     <description>TEAM MILHANO "WE LEAD THE WAY"
  </description>
     <platform>all</platform>
+  <assets>
+    <icon>icon.gif</icon>
+    <fanart>fanart.gif</fanart>
+  </assets>
   </extension>
-</addon>
+ </addon>	
+
+
